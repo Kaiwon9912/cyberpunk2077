@@ -196,13 +196,17 @@
         transform: rotate(360deg);
     }
 }
-  @media only screen and (max-width:768px) {
+  @media only screen and (max-width:1200px) {
     .container {
       max-width: 90%;
       margin: auto;
       height: auto;
     }
-  
+    .option img {
+      width: 120px;
+      height: 100px;
+      padding: 5px;
+    }
     .left, .right {
       width: 100%;
     }
@@ -212,7 +216,7 @@
     }
     .box
     {
-      height: 900px;
+      height: 130vw;
       
     }
   }
@@ -221,7 +225,7 @@
   {
     border: white solid ;
   }
-  @media only screen and (max-width:511px) {
+  @media only screen and (max-width:720px) {
     .container {
       max-width: 100%;
       height: auto;
@@ -232,6 +236,11 @@
       padding: 0;
     }
   
+    .box
+    {
+      height: 1000px;
+      
+    }
     img {
       width: 100%;
       height: 100%;

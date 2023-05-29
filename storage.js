@@ -1,5 +1,6 @@
 var cart = JSON.parse(localStorage.getItem("cart")) || []
 var btn = document.getElementsByClassName("add-btn")[0]
+var cartQuantity = JSON.parse(localStorage.getItem("quantity")) || []
 var value = document.getElementById("value")
 var data
 var cartValue = 0;
@@ -14,7 +15,7 @@ function updateMiniCart(quantity)
 let tQuantity =1;
 btn.addEventListener("click", addCart)
 
-
+quantity()
 
 function addCart(event)
 {
@@ -24,9 +25,9 @@ function addCart(event)
     var price = item.getElementsByTagName("h4")[0].innerText
     var img = document.getElementsByClassName("big-img")[0].src
    
-    var quantity =1
-    if(tQuantity>1) quantity=0
-    quantity+= tQuantity
+     
+    var quantity =tQuantity
+    var miniQuantity;
     
     var dup = false
     data = {name,price,img,quantity }
@@ -34,13 +35,15 @@ function addCart(event)
     cart.forEach(function(item)
     {
        
-
+        
         if(item.name===name) 
         {
+            console.log(tQuantity)
             dup= true
           
-            item.quantity+=tQuantity
+            item.quantity +=tQuantity
             
+            miniQuantity=item.quantity
             console.log(item.quantity)
             localStorage.setItem("cart",JSON.stringify(cart))
         }
@@ -51,15 +54,37 @@ function addCart(event)
     { 
         cartValue++
    cart.push(data)
+   cartQuantity[0]=cartValue
     localStorage.setItem("cart",JSON.stringify(cart))
+    localStorage.setItem("quantity",JSON.stringify(cartQuantity))
+    cartIcon.textContent = cartValue
+    added.textContent =cartValue
+    console.log(cartValue)
+    addItemToMiniCart(name, price, img,quantity)
    }
-   tQuantity =1;
-   value.textContent="1"
+  
    
-   cartIcon.textContent = cartValue
-   console.log(cartIcon.innerText)
+  
+  
 }
+function addItemToMiniCart(name, price, img,quantity) {
 
+
+    console.log("added")
+    var cartRow = document.createElement('div')
+    cartRow.classList.add('miniDetail')
+    var cartItems = document.getElementsByClassName('storage')[0]
+  
+  
+    var cartRowContents = `
+    <img src=${img}>
+    <h3>${name}</h3>
+    <h4>${price}</h4>
+    `
+    cartRow.innerHTML = cartRowContents
+    cartItems.append(cartRow)
+  
+}
 
 
 
@@ -75,7 +100,7 @@ function img(anything) {
 
 
    
-quantity()
+
     function quantity()
     {
 
