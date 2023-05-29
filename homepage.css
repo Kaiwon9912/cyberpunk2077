@@ -577,7 +577,7 @@ input:checked ~ header .text
 
    .row
    {
-    padding: 0 10px;
+    padding: 0;
    }
    #check-btn
    {
@@ -609,12 +609,7 @@ input:checked ~ header .text
         padding: 0;
       
     }
-    .content ul
-    {
-        padding: 0;
-        margin: 0;
-        width: 10px;
-    }
+    
     
     .product img
     {
@@ -695,7 +690,7 @@ input:checked ~ header .text
     }
     .catalog ul
     {
-        width: auto;
+        width: 100%;
     }
     .catalog li
     {
